@@ -1,0 +1,145 @@
+body {
+  background-color: #f0f2f5;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+#wrapper {
+  display: flex;
+  width: 100%;
+}
+
+#sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background: #ffffff;
+  overflow-y: auto;
+  transition: all 0.3s ease;
+  z-index: 9999;
+  border-right: 1px solid #ddd;
+}
+
+#sidebar.active {
+  left: 0;
+}
+
+.sidebar-header {
+  background: #1976d2;
+  color: #fff;
+  padding: 1rem;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+#sidebar .list-group-item {
+  background: #ffffff;
+  color: #333;
+  border: none;
+}
+
+#sidebar .list-group-item:hover {
+  background: #f5f5f5;
+}
+
+#main-content {
+  flex: 1;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.logout-btn {
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+canvas {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 0.75rem;
+}
+
+@media (max-width: 576px) {
+  .logout-btn {
+    font-size: 0.75rem;
+    padding: 6px 10px;
+  }
+
+  .navbar-brand {
+    font-size: 1rem;
+  }
+}
+/* Filters grid layout */
+.filters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.filters-grid .btn {
+  white-space: nowrap;
+}
+
+/* Bell button fix */
+.bell-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  border-radius: 50%;
+}
+
+.bell-btn i {
+  font-size: 1.2rem;
+}
+/* Consistent circular bell button */
+.bell-btn {
+  background-color: transparent;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  color: #fff;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.bell-btn:hover {
+  background-color: #ffffff20;
+}
+
+/* Icon size inside bell button */
+.bell-btn i {
+  font-size: 1.2rem;
+}
+
+/* Adjust badge position on bell button */
+.bell-btn .badge {
+  font-size: 0.6rem;
+  padding: 4px 6px;
+}
+
+
+
+.navbar .navbar-brand {
+  font-size: 1rem !important;
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+@media (max-width: 576px) {
+  #page-content-wrapper .navbar .navbar-brand {
+    font-size: 1rem !important;
+    font-weight: 600;
+    margin-right: 10px;
+  }
+}
