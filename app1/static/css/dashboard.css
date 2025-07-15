@@ -3,75 +3,152 @@ body {
   font-family: 'Segoe UI', sans-serif;
 }
 
+/* Wrapper */
 #wrapper {
   display: flex;
   width: 100%;
 }
 
+/* Sidebar */
 #sidebar {
   position: fixed;
   top: 0;
-  left: -250px;
-  width: 250px;
+  left: 0;
+  width: 240px;
   height: 100%;
-  background: #ffffff;
+  background: #1976d2;
   overflow-y: auto;
   transition: all 0.3s ease;
   z-index: 9999;
-  border-right: 1px solid #ddd;
-}
-
-#sidebar.active {
-  left: 0;
+  box-shadow: 2px 0 6px rgba(0,0,0,0.1);
 }
 
 .sidebar-header {
-  background: #1976d2;
+  background: #1565c0;
   color: #fff;
-  padding: 1rem;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 #sidebar .list-group-item {
-  background: #ffffff;
-  color: #333;
+  background: transparent;
+  color: #fff;
   border: none;
+  padding: 14px 20px;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.3s ease;
 }
 
 #sidebar .list-group-item:hover {
-  background: #f5f5f5;
+  background: #1565c0;
+  border-left: 4px solid #ffc107;
 }
 
+#sidebar .list-group-item i {
+  background: #ffffff20;
+  padding: 8px;
+  border-radius: 50%;
+  font-size: 1rem;
+}
+
+/* Sidebar toggle for mobile */
+@media (max-width: 991px) {
+  #sidebar {
+    left: -240px;
+  }
+  #sidebar.active {
+    left: 0;
+  }
+}
+
+/* Main content area */
 #main-content {
   flex: 1;
-  transition: all 0.3s ease;
-  width: 100%;
+  transition: margin-left 0.3s ease;
+  margin-left: 240px;
 }
 
-.logout-btn {
-  padding: 8px 14px;
-  border-radius: 20px;
-  font-size: 0.85rem;
+@media (max-width: 991px) {
+  #main-content {
+    margin-left: 0;
+  }
+}
+
+/* Navbar */
+.navbar {
+  height: 64px;
+}
+
+.navbar .container-fluid {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.navbar .navbar-brand {
+  font-size: 1rem !important;
+  font-weight: 600;
+}
+
+.breadcrumb-nav {
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 500px;
+  flex-shrink: 1;
 }
 
+.breadcrumb {
+  --bs-breadcrumb-divider: ">";
+  margin-bottom: 0;
+}
+
+.breadcrumb-item {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.9rem;
+}
+
+.breadcrumb-item.active {
+  color: #fff;
+}
+
+@media (max-width: 767.98px) {
+  .breadcrumb-nav {
+    max-width: 160px;
+  }
+}
+
+@media (max-width: 576px) {
+  .breadcrumb-item:nth-child(2),
+  .breadcrumb-item:nth-child(3),
+  .breadcrumb-item:nth-child(4) {
+    display: none;
+  }
+  .breadcrumb-item:first-child::after {
+    content: ' / ...';
+    color: rgba(255, 255, 255, 0.85);
+    margin-left: 4px;
+  }
+}
+
+/* Cards and canvas styling */
 canvas {
   background-color: #fff;
   padding: 1rem;
   border-radius: 0.75rem;
 }
 
-@media (max-width: 576px) {
-  .logout-btn {
-    font-size: 0.75rem;
-    padding: 6px 10px;
-  }
-
-  .navbar-brand {
-    font-size: 1rem;
-  }
-}
 /* Filters grid layout */
 .filters-grid {
   display: grid;
@@ -83,22 +160,7 @@ canvas {
   white-space: nowrap;
 }
 
-/* Bell button fix */
-.bell-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  width: 40px;
-  height: 40px;
-  position: relative;
-  border-radius: 50%;
-}
-
-.bell-btn i {
-  font-size: 1.2rem;
-}
-/* Consistent circular bell button */
+/* Bell button styling */
 .bell-btn {
   background-color: transparent;
   border: 2px solid #fff;
@@ -117,29 +179,28 @@ canvas {
   background-color: #ffffff20;
 }
 
-/* Icon size inside bell button */
 .bell-btn i {
   font-size: 1.2rem;
 }
 
-/* Adjust badge position on bell button */
 .bell-btn .badge {
   font-size: 0.6rem;
   padding: 4px 6px;
 }
 
-
-
-.navbar .navbar-brand {
-  font-size: 1rem !important;
-  font-weight: 600;
-  margin-right: 10px;
+/* Logout button size on small devices */
+@media (max-width: 576px) {
+  .logout-btn {
+    font-size: 0.75rem;
+    padding: 6px 10px;
+  }
+  .navbar-brand {
+    font-size: 1rem;
+  }
 }
 
-@media (max-width: 576px) {
-  #page-content-wrapper .navbar .navbar-brand {
-    font-size: 1rem !important;
-    font-weight: 600;
-    margin-right: 10px;
-  }
+/* List-group badge size */
+.list-group-item .badge {
+  font-size: 0.6rem;
+  padding: 4px 6px;
 }

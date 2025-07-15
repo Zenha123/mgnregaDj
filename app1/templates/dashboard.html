@@ -10,6 +10,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+ 
   <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
 </head>
 
@@ -19,39 +20,80 @@
 
   <!-- Sidebar -->
   <div id="sidebar">
-   
-    <div class="list-group list-group-flush">
-      <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-house-door me-2"></i> Dashboard</a>
-      <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-gear me-2"></i> Admin Panel</a>
-      <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-bar-chart-line me-2"></i> Reports</a>
-      <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-bell me-2"></i> Notifications</a>
-      <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-person me-2"></i> Profile</a>
-    </div>
+   <div class="sidebar-header">
+  MGNREGA
+</div>
+
+<div class="list-group list-group-flush">
+  <a href="#" class="list-group-item list-group-item-action">
+    <i class="bi bi-house-door"></i>  Home
+  </a>
+<a href="#" class="list-group-item list-group-item-action d-flex align-items-center gap-2">
+  <span class="position-relative">
+    <i class="bi bi-bell"></i>
+    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+      3
+    </span>
+  </span>
+  Notifications
+</a>
+
+
+  <a href="#" class="list-group-item list-group-item-action">
+    <i class="bi bi-box-arrow-right"></i> Logout
+  </a>
+</div>
+
   </div>
 
   <!-- Main Content -->
   <div id="main-content">
 
-    <!-- Top Navbar -->
-    <nav class="navbar navbar-expand-lg" style="background-color: #1976d2;">
-      <div class="container-fluid d-flex align-items-center">
-        <button id="sidebarToggle" class="btn btn-outline-light me-3"><i class="bi bi-list"></i></button>
-        <a class="navbar-brand text-white fw-bold fs-5 me-auto" href="#">MGNREGA</a>
+    
+   <!-- Top Navbar -->
+<nav class="navbar navbar-expand-lg" style="background-color: #1976d2;">
+  <div class="container-fluid d-flex align-items-center">
+    <!-- Sidebar Toggle button - visible only on mobile -->
+    <button id="sidebarToggle" class="btn btn-outline-light me-3 d-lg-none">
+      <i class="bi bi-list"></i>
+    </button>
 
-        <div class="d-flex align-items-center gap-3">
-         <a class="btn bell-btn position-relative" href="#">
-  <i class="bi bi-bell"></i>
-  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">3</span>
-</a>
+    <!-- Brand name - visible only on mobile -->
+    <a class="navbar-brand text-white fw-bold fs-5 me-auto d-lg-none" href="#">MGNREGA</a>
 
-          <div class="text-white d-flex align-items-center gap-1">
-            <i class="bi bi-person-fill"></i>
-            <span class="fw-semibold">Zenha</span>
-          </div>
-          <button class="btn btn-outline-light logout-btn">Logout</button>
-        </div>
+    <!-- Breadcrumb (desktop only) -->
+    <!--<div class="breadcrumb-nav d-none d-lg-block ms-2">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item text-white">Kerala</li>
+          <li class="breadcrumb-item text-white">Kannur</li>
+          <li class="breadcrumb-item text-white">Thalassery</li>
+          <li class="breadcrumb-item text-white active" aria-current="page">Panchayat A</li>
+        </ol>
+      </nav>
+    </div>-->
+
+    <!-- Breadcrumb (desktop + mobile) -->
+<div class="breadcrumb-nav flex-grow-1 ms-2">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb mb-0" id="breadcrumbTrail">
+      <li class="breadcrumb-item text-white">Kerala</li>
+      <li class="breadcrumb-item text-white">Kannur</li>
+      <li class="breadcrumb-item text-white">Thalassery</li>
+      <li class="breadcrumb-item text-white active" aria-current="page">Panchayat A</li>
+    </ol>
+  </nav>
+</div>
+
+
+    <div class="d-flex align-items-center gap-3 ms-auto">
+      <div class="text-white d-flex align-items-center gap-1">
+        <i class="bi bi-person-fill"></i>
+        <span class="fw-semibold">Zenha</span>
       </div>
-    </nav>
+    </div>
+  </div>
+</nav>
 
     <!-- Page Content -->
     <div class="container-fluid p-4">
@@ -108,39 +150,44 @@
         <div class="card-body p-0">
           <div style="overflow-x:auto;">
           <table class="table table-bordered table-hover m-0">
-            <thead class="table-light">
-              <tr>
-                <th>Location</th>
-                <th>Total Projects</th>
-                <th>Wage %</th>
-                <th>Material %</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="table-success">
-                <td>Panchayat A</td>
-                <td>32</td>
-                <td>62%</td>
-                <td>38%</td>
-                <td>Compliant</td>
-              </tr>
-              <tr class="table-warning">
-                <td>Panchayat B</td>
-                <td>18</td>
-                <td>56%</td>
-                <td>44%</td>
-                <td>Warning</td>
-              </tr>
-              <tr class="table-danger">
-                <td>Panchayat C</td>
-                <td>21</td>
-                <td>48%</td>
-                <td>52%</td>
-                <td>Critical</td>
-              </tr>
-            </tbody>
-          </table>
+  <thead class="table-light">
+    <tr>
+      <th>Location</th>
+      <th>Total Projects</th>
+      <th>Wage %</th>
+      <th>Material %</th>
+      <th>Status</th>
+      <th>Time</th>   <!-- ✅ Added new Time header -->
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="table-success">
+      <td>Panchayat A</td>
+      <td>32</td>
+      <td>62%</td>
+      <td>38%</td>
+      <td>Compliant</td>
+      <td>10:30 AM</td>   <!-- ✅ Sample time value -->
+    </tr>
+    <tr class="table-warning">
+      <td>Panchayat B</td>
+      <td>18</td>
+      <td>56%</td>
+      <td>44%</td>
+      <td>Warning</td>
+      <td>11:45 AM</td>
+    </tr>
+    <tr class="table-danger">
+      <td>Panchayat C</td>
+      <td>21</td>
+      <td>48%</td>
+      <td>52%</td>
+      <td>Critical</td>
+      <td>12:15 PM</td>
+    </tr>
+  </tbody>
+</table>
+
           </div>
         </div>
       </div>
@@ -164,18 +211,25 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
   const sidebarToggle = document.getElementById("sidebarToggle");
-  const sidebar = document.getElementById("sidebar");
-  sidebarToggle.onclick = function (e) {
-    e.stopPropagation();
+const sidebar = document.getElementById("sidebar");
+
+sidebarToggle.onclick = function (e) {
+  e.stopPropagation();
+  if (window.innerWidth < 992) {
     sidebar.classList.toggle("active");
-  };
-  document.addEventListener("click", function (e) {
+  }
+};
+
+document.addEventListener("click", function (e) {
+  if (window.innerWidth < 992) {
     if (sidebar.classList.contains("active")) {
       if (!sidebar.contains(e.target) && e.target !== sidebarToggle) {
         sidebar.classList.remove("active");
       }
     }
-  });
+  }
+});
+
 
   new Chart(document.getElementById('ratioChart'), {
     type: 'doughnut',

@@ -5,4 +5,5 @@ urlpatterns = [
     path('login/', views.login, name='login'),
     path('dash/',views.dashboard,name='home'),
     path('set-password/', views.set_password, name='set_password'),
+     path('notification/',views.noti,name='notification'),
 ]

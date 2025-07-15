@@ -21,3 +21,5 @@ def login(request):
 
 def dashboard(request):
     return render(request,'dashboard.html')
+def noti(request):
+    return render(request,'notification.html')
